@@ -1,5 +1,5 @@
 export const weekDaysES = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
-export const monthsES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+export const monthsNameES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
 const getPreviousMonth = (currentMonth) => {
     return (currentMonth === 0 ? 11 : currentMonth - 1);
@@ -14,6 +14,7 @@ function useCalendar(year = new Date().getFullYear(), month = new Date().getMont
 
     const days = {
         'month': month,
+        'year':year,
         'previousMonth': [],
         'currentMonth': [],
         'nextMonth': []

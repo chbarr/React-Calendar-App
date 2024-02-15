@@ -1,0 +1,56 @@
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+.date-picker-container{
+    font-family: 'Roboto Mono';
+    font-size: var(--calendar-header-font-size);
+}
+
+.date-picker-btn {
+    padding: 10px;
+    height: fit-content;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    max-height: 130px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: var(--black-theme-calendar-dropdown-color);
+    font-size: var(--calendar-dropdown-font-size);
+    color: var(--black-theme-font-color)
+}
+
+.dropdown-content li {
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    font-family: 'Roboto Mono';
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--black-theme-font-color) 1px);
+    background-position: 6px bottom;
+    background-size: 75% 1px;
+    background-repeat: no-repeat;
+}
+
+.dropdown-content li:hover {
+    background-color: #f0f0f0;
+}
+
+
+

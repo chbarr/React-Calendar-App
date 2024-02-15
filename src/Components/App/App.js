@@ -1,11 +1,12 @@
 import './App.css';
-import { useCalendar, weekDaysES, monthsES } from '../../customHooks/useCalendar';
+import { useCalendar, weekDaysES, monthsNameES } from '../../customHooks/useCalendar';
+import { MonthDropdown } from '../MonthDropdown/MonthDropdown';
 function App() {
-  const days = useCalendar();
+  const calendar = useCalendar();
   return (
     <div className="App">
       <div>
-        <h2>{monthsES[days.month]}</h2>
+        <MonthDropdown months={monthsNameES} month={calendar.month} year={calendar.year}/>
         <div className='calendarGridHeader'>
           {weekDaysES.slice(0, weekDaysES.length - 1).map((day, i) => (
             <div key={i}
@@ -17,17 +18,17 @@ function App() {
         </div>
         <div className='calendarGrid'>
           {
-            days['previousMonth'].map(dayNumber => (
+            calendar['previousMonth'].map(dayNumber => (
               <div className="dayCell">{dayNumber}</div>
             ))
           }
           {
-            days['currentMonth'].map((_, i) => (
+            calendar['currentMonth'].map((_, i) => (
               <div className="dayCell">{i + 1}</div>
             ))
           }
           {
-            days['nextMonth'].map((_, i) => (
+            calendar['nextMonth'].map((_, i) => (
               <div className="dayCell">{i + 1}</div>
             ))
           }
