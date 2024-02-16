@@ -12,7 +12,7 @@ const getNextMonth = (currentMonth) => {
 }
 
 function useCalendar() {
-    const [year, month] = useSelector(state => [state.ui.yearSelected, state.ui.monthSelected]);
+    const [year, month] = useSelector(state => [state.ui.selectedYear, state.ui.selectedMonth]);
     const lastMonthDay = new Date(year, getNextMonth(month), 0);
 
     const days = {

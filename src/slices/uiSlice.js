@@ -1,22 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    yearSelected: new Date().getFullYear(),
-    monthSelected: new Date().getMonth()
+    selectedYear: new Date().getFullYear(),
+    selectedMonth: new Date().getMonth()
 }
 
 export const uiSlice = createSlice({
     name: 'ui',
     initialState,
     reducers: {
-        setYear: (state, action) => {
-            state.year = action.year;
+        setSelectedYear: (state, action) => {
+            state.year = action.payload.selectedYear;
         },
-        setMonth: (state, action) => {
-            state.month = action.month;
+        setSelectedMonth: (state, action) => {
+            state.selectedMonth = action.payload.selectedMonth;
         }
     }
 });
 
-export const {setYear, setMonth} = uiSlice.actions;
+export const {setSelectedYear, setSelectedMonth} = uiSlice.actions;
 export const uiReducer = uiSlice.reducer;

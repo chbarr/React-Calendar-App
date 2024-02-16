@@ -2,10 +2,13 @@ import './monthDropdown.css';
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { monthsNameES } from '../../customHooks/useCalendar';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSelectedMonth } from '../../slices/uiSlice';
 
 function MonthDropdown(props) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [selectedMonth, setSelectedMonth] = useState(null);
+    const dispatch = useDispatch();
+    const selectedMonth = useSelector(state => state.ui.selectedMonth);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -13,8 +16,8 @@ function MonthDropdown(props) {
 
     const handleItemClick = (index) => {
         console.log(monthsNameES[index])
-        setSelectedMonth(index === selectedMonth ? null : index);
         setDropdownOpen(false);
+        dispatch(setSelectedMonth({ 'selectedMonth': index }))
     };
 
     return (
@@ -28,7 +31,7 @@ function MonthDropdown(props) {
                     {props.year}
                 </button>
             </div>
-            
+
             {dropdownOpen && (
                 <div className='dropdown-content'>
                     <ul>
