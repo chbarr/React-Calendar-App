@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 export const weekDaysES = ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
 export const monthsNameES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
@@ -9,12 +11,13 @@ const getNextMonth = (currentMonth) => {
     return (currentMonth === 11 ? 0 : currentMonth + 1);
 }
 
-function useCalendar(year = new Date().getFullYear(), month = new Date().getMonth()) {
+function useCalendar() {
+    const [year, month] = useSelector(state => [state.ui.yearSelected, state.ui.monthSelected]);
     const lastMonthDay = new Date(year, getNextMonth(month), 0);
 
     const days = {
         'month': month,
-        'year':year,
+        'year': year,
         'previousMonth': [],
         'currentMonth': [],
         'nextMonth': []
