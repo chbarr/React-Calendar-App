@@ -7,7 +7,6 @@ function YearSelector(props) {
     const dispatch = useDispatch();
     const [boxYear, setBoxYear] = useState(props.selectedYear);
     const onYearSelected = (selectedYear) => {
-        props.setYearBoxOpen(false)
         dispatch(setSelectedYear({ selectedYear }))
     }
     const onArrowClicked = (arrowDirection) => {

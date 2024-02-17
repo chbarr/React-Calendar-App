@@ -1,40 +1,40 @@
 import './dateSelector.css';
-import React, { useState } from 'react'
-import { monthsNameES } from '../../customHooks/useCalendar';
+import React from 'react'
 import { YearSelector } from '../YearSelector/YearSelector';
-import { MonthDropdown } from '../MonthSelector/MonthSelector';
-import { useSelector } from 'react-redux';
+import { monthsNameES } from '../../customHooks/useCalendar';
+import { MonthSelector } from '../MonthSelector/MonthSelector';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDateSelectorClicked } from '../../slices/uiSlice';
 
 function DateSelector() {
-    const [selectedYear, selectedMonth] = useSelector(state => [state.ui.selectedYear, state.ui.selectedMonth]);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [yearBoxOpen, setYearBoxOpen] = useState(false);
+    const {
+        selectedYear,
+        selectedMonth,
+        yearSelectorOpened,
+        monthSelectorOpened
+    } = useSelector(state => state.ui)
 
-    const toggleYearBox = () => {
-        setYearBoxOpen(!yearBoxOpen);
+    const dispatch = useDispatch();
+
+    const toggleDateSelector = (selectorType) => {
+        dispatch(setDateSelectorClicked({ selectorType }))
     }
-
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
-    };
 
     return (
         <section className='date-selector-container'>
             <div className='date-legend'>
-                <button className='no-border-btn' onClick={toggleDropdown}>
+                <button className='no-border-btn' onClick={() => toggleDateSelector('MONTH')}>
                     {monthsNameES[selectedMonth]}
                 </button>
                 <span>de</span>
-                <button className='no-border-btn' onClick={toggleYearBox}>
+                <button className='no-border-btn' onClick={() => toggleDateSelector('YEAR')}>
                     {selectedYear}
                 </button>
             </div>
 
-            {dropdownOpen && <MonthDropdown selectedMonth={selectedMonth}
-                setDropdownOpen={setDropdownOpen}
+            {monthSelectorOpened && <MonthSelector selectedMonth={selectedMonth}
                 months={monthsNameES} />}
-            {yearBoxOpen && <YearSelector selectedYear={selectedYear}
-                setYearBoxOpen={setYearBoxOpen} />}
+            {yearSelectorOpened && <YearSelector selectedYear={selectedYear} />}
         </section>
     )
 }

@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { setSelectedMonth } from '../../slices/uiSlice';
 
-function MonthDropdown(props) {
+function MonthSelector(props) {
     const dispatch = useDispatch();
 
-    const handleItemClick = (index) => {
-        props.setDropdownOpen(false);
-        dispatch(setSelectedMonth({ 'selectedMonth': index }))
+    const handleItemClick = (selectedMonth) => {
+        dispatch(setSelectedMonth({ selectedMonth }))
     };
 
     return (
@@ -33,4 +32,4 @@ function MonthDropdown(props) {
     )
 }
 
-export { MonthDropdown }
+export { MonthSelector }
