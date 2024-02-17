@@ -10,7 +10,7 @@ export const uiSlice = createSlice({
     initialState,
     reducers: {
         setSelectedYear: (state, action) => {
-            state.year = action.payload.selectedYear;
+            state.selectedYear = action.payload.selectedYear;
         },
         setSelectedMonth: (state, action) => {
             state.selectedMonth = action.payload.selectedMonth;

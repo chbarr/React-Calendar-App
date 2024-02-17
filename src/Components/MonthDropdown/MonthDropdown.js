@@ -4,18 +4,23 @@ import { v4 as uuidv4 } from 'uuid';
 import { monthsNameES } from '../../customHooks/useCalendar';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSelectedMonth } from '../../slices/uiSlice';
+import { YearSelector } from '../YearSelector/YearSelector';
 
 function MonthDropdown(props) {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [yearBoxOpen, setYearBoxOpen] = useState(false);
     const dispatch = useDispatch();
     const selectedMonth = useSelector(state => state.ui.selectedMonth);
+
+    const toggleYearBox = () => {
+        setYearBoxOpen(!yearBoxOpen);
+    }
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
     const handleItemClick = (index) => {
-        console.log(monthsNameES[index])
         setDropdownOpen(false);
         dispatch(setSelectedMonth({ 'selectedMonth': index }))
     };
@@ -27,7 +32,7 @@ function MonthDropdown(props) {
                     {monthsNameES[props.month]}
                 </button>
                 <span>de</span>
-                <button className='date-picker-btn'>
+                <button className='date-picker-btn' onClick={toggleYearBox}>
                     {props.year}
                 </button>
             </div>
@@ -51,6 +56,8 @@ function MonthDropdown(props) {
                     </ul>
                 </div>
             )}
+
+            {yearBoxOpen && <YearSelector/>}
         </section>
     )
 }
