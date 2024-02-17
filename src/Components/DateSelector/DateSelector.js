@@ -2,7 +2,7 @@ import './dateSelector.css';
 import React, { useState } from 'react'
 import { monthsNameES } from '../../customHooks/useCalendar';
 import { YearSelector } from '../YearSelector/YearSelector';
-import { MonthDropdown } from '../MonthDropdown/MonthDropdown';
+import { MonthDropdown } from '../MonthSelector/MonthSelector';
 import { useSelector } from 'react-redux';
 
 function DateSelector() {

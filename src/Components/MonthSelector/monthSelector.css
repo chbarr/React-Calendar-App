@@ -1,4 +1,4 @@
-.dropdown-container {
+.month-selector-container {
     display: block;
     position: absolute;
     left: 30px;
@@ -10,7 +10,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-container ul {
+.month-selector-container ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -19,7 +19,7 @@
     color: var(--black-theme-font-color)
 }
 
-.dropdown-container li {
+.month-selector-container li {
     padding: 5px;
     cursor: pointer;
     font-family: 'Roboto Mono';

@@ -1,4 +1,4 @@
-import './monthDropdown.css';
+import './monthSelector.css';
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ function MonthDropdown(props) {
     };
 
     return (
-        <section className='dropdown-container'>
+        <section className='month-selector-container'>
             <ul>
                 {
                     props.months.map((month, i) =>
