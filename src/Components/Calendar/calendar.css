@@ -1,0 +1,29 @@
+.calendarGrid {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    ;
+    grid-template-columns: repeat(7, 1fr);
+    ;
+    row-gap: 10px;
+    column-gap: 5px;
+    margin: 0 20px;
+    background-color: var(--black-theme-calendar-header-color);
+    color: var(--black-theme-font-color);
+    font-size: var(--calendar-body-font-size);
+}
+
+.calendarGridHeader {
+    display: grid;
+    margin: 0 20px 3px 20px;
+    grid-template-columns: repeat(7, 1fr);
+    ;
+    justify-items: center;
+    background-color: var(--black-theme-calendar-body-color);
+    color: var(--black-theme-font-color);
+    font-size: var(--calendar-column-header-font-size);
+}
+
+.calendarGrid .dayCell {
+    aspect-ratio: 1;
+    border-radius: 10%;
+}
