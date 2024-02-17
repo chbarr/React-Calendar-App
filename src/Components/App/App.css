@@ -43,3 +43,13 @@ body {
   aspect-ratio: 1;
   border-radius: 10%;
 }
+
+.no-border-btn {
+  padding: 10px;
+  height: fit-content;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+}

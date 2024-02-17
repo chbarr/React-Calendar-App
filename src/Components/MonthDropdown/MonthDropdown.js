@@ -28,11 +28,11 @@ function MonthDropdown(props) {
     return (
         <section className='dropdown-container'>
             <div className='date-picker-container'>
-                <button className='date-picker-btn' onClick={toggleDropdown}>
+                <button className='no-border-btn' onClick={toggleDropdown}>
                     {monthsNameES[props.month]}
                 </button>
                 <span>de</span>
-                <button className='date-picker-btn' onClick={toggleYearBox}>
+                <button className='no-border-btn' onClick={toggleYearBox}>
                     {props.year}
                 </button>
             </div>

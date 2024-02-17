@@ -1,7 +1,21 @@
 .year-selector-container {
-    width: 200px;
-    height: 100px;
+    margin: 0 auto;
+    width: 250px;
+    font-size: var(--calendar-body-font-size);
+    background-color: var(--black-theme-calendar-header-color);
+}
+.year-selector-container button{
+    color: var(--black-theme-font-color);
+}
+.arrow-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.years-box{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    overflow-y: auto;
+    margin: 0 auto;
+    height: 180px;
 }
