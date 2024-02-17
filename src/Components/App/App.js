@@ -1,12 +1,12 @@
 import './App.css';
-import { useCalendar, weekDaysES, monthsNameES } from '../../customHooks/useCalendar';
-import { MonthDropdown } from '../MonthDropdown/MonthDropdown';
+import { useCalendar, weekDaysES } from '../../customHooks/useCalendar';
+import { DateSelector } from '../DateSelector/DateSelector';
 function App() {
   const calendar = useCalendar();
   return (
     <div className="App">
       <div>
-        <MonthDropdown months={monthsNameES} month={calendar.month} year={calendar.year}/>
+        <DateSelector />
         <div className='calendarGridHeader'>
           {weekDaysES.slice(0, weekDaysES.length - 1).map((day, i) => (
             <div key={i}

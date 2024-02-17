@@ -1,12 +1,15 @@
 .year-selector-container {
-    margin: 0 auto;
+    position: absolute;
+    left: calc(50% - 125px);
     width: 250px;
     font-size: var(--calendar-body-font-size);
     background-color: var(--black-theme-calendar-header-color);
 }
+
 .year-selector-container button{
     color: var(--black-theme-font-color);
 }
+
 .arrow-buttons-container {
     display: flex;
     justify-content: space-between;

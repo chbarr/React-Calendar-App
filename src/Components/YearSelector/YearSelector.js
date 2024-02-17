@@ -1,13 +1,13 @@
 import './yearSelector.css'
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSelectedYear } from '../../slices/uiSlice';
-function YearSelector() {
-    const selectedYear = useSelector(state => state.ui.selectedYear);
+function YearSelector(props) {
     const dispatch = useDispatch();
-    const [boxYear, setBoxYear] = useState(selectedYear);
+    const [boxYear, setBoxYear] = useState(props.selectedYear);
     const onYearSelected = (selectedYear) => {
+        props.setYearBoxOpen(false)
         dispatch(setSelectedYear({ selectedYear }))
     }
     const onArrowClicked = (arrowDirection) => {

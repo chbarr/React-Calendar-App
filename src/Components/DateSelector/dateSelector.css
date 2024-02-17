@@ -1,0 +1,9 @@
+.date-selector-container {
+    position: relative;
+}
+
+.date-legend {
+    font-family: 'Roboto Mono';
+    font-size: var(--calendar-header-font-size);
+    padding-left: 20px;
+}
