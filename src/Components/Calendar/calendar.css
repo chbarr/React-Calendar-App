@@ -1,9 +1,15 @@
+.calendar-container {
+    filter: blur(0);
+    transition: filter 0.3s ease;
+}
+.calendar-container-blurred {
+    filter: blur(1.5px);
+}
+
 .calendarGrid {
     display: grid;
     grid-template-rows: repeat(5, 1fr);
-    ;
     grid-template-columns: repeat(7, 1fr);
-    ;
     row-gap: 10px;
     column-gap: 5px;
     margin: 0 20px;
@@ -16,7 +22,6 @@
     display: grid;
     margin: 0 20px 3px 20px;
     grid-template-columns: repeat(7, 1fr);
-    ;
     justify-items: center;
     background-color: var(--black-theme-calendar-body-color);
     color: var(--black-theme-font-color);
