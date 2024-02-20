@@ -27,8 +27,3 @@
     color: var(--black-theme-font-color);
     font-size: var(--calendar-column-header-font-size);
 }
-
-.calendarGrid .dayCell {
-    aspect-ratio: 1;
-    border-radius: 10%;
-}

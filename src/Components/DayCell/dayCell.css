@@ -1,0 +1,36 @@
+.day-cell {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10%;
+}
+
+.events-counter {
+    position: absolute;
+    left: 2%;
+    top: 8%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--event-counter-bubble-background);
+    font-size: 0.7rem;
+}
+
+.events-counter span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.events-counter-hidden {
+    display: none;
+}
+
+.day-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--calendar-day-cell-font-size);
+}

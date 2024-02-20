@@ -2,6 +2,7 @@ import React from 'react'
 import './calendar.css'
 import { useCalendar, weekDaysES } from '../../customHooks/useCalendar';
 import { useSelector } from 'react-redux';
+import DayCell from '../DayCell/DayCell';
 
 function Calendar() {
     const calendar = useCalendar();
@@ -23,17 +24,17 @@ function Calendar() {
             <div className='calendarGrid'>
                 {
                     calendar['previousMonth'].map(dayNumber => (
-                        <div className="dayCell">{dayNumber}</div>
+                        <DayCell eventsCounter={0} dayNumber={dayNumber} />
                     ))
                 }
                 {
                     calendar['currentMonth'].map((_, i) => (
-                        <div className="dayCell">{i + 1}</div>
+                        <DayCell eventsCounter={0} dayNumber={i + 1} />
                     ))
                 }
                 {
                     calendar['nextMonth'].map((_, i) => (
-                        <div className="dayCell">{i + 1}</div>
+                        <DayCell eventsCounter={0} dayNumber={i + 1} />
                     ))
                 }
             </div>
