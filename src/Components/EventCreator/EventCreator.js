@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
+import { HourInput } from '../HourInput/HourInput';
 import './eventCreator.css'
-import HourInput from '../HourInput/HourInput';
 
 function EventCreator(props) {
+    const currentDate = new Date();
+    const timePeriod = currentDate.getHours() < 12 ? 'AM' : 'PM';
+
     const onTitleChange = (event) => {
         setEventTitle(event.target.value);
     };
@@ -14,8 +17,8 @@ function EventCreator(props) {
 
     const [eventTitle, setEventTitle] = useState('');
     const [eventDescription, setEventDescription] = useState('');
-    const [startEventTimePeriod, setStartEventTimePeriod] = useState('AM');
-    const [finishEventTimePeriod, setFinishEventTimePeriod] = useState('AM');
+    const [startEventTimePeriod, setStartEventTimePeriod] = useState(timePeriod);
+    const [finishEventTimePeriod, setFinishEventTimePeriod] = useState(timePeriod);
 
     return (
         <section className='event-creator-container'>
