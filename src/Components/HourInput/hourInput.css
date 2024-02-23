@@ -1,0 +1,36 @@
+.hour-input-container span{
+    color: var(--black-theme-placeholder-font-color);
+    font-size: var(--standard-font-size);
+}
+
+.hour-input-container span:first-child{
+    display: block;
+}
+
+.hour-input-container span:last-of-type{
+    margin: 0 5px;
+}
+
+.hour-input-container div{
+    display: flex;
+}
+
+.hour-cell {
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+
+    background-color: #c9c9c920;
+    border-bottom: 1px solid rgb(155, 152, 152);
+    width: 10px;
+    margin-left: 2px;
+}
+
+.hour-input-container button {
+    padding: 0;
+    background-color: #E9E5D680;
+    width: 30px;
+    height: 20px;
+    margin-left: 20px;
+    font-size: 0.8rem;
+}

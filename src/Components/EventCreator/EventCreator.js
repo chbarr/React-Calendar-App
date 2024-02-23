@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import './eventCreator.css'
+import HourInput from '../HourInput/HourInput';
 
 function EventCreator(props) {
     const onTitleChange = (event) => {
@@ -10,12 +11,6 @@ function EventCreator(props) {
     const onDescriptionChange = (event) => {
         setEventDescription(event.target.value);
     };
-    const onTimePeriodClicked = (eventTime) => {
-        if (eventTime === 'START_EVENT')
-            setStartEventTimePeriod((startEventTimePeriod === 'AM' ? 'PM' : 'AM'));
-        else
-            setFinishEventTimePeriod((finishEventTimePeriod === 'AM' ? 'PM' : 'AM'));
-    }
 
     const [eventTitle, setEventTitle] = useState('');
     const [eventDescription, setEventDescription] = useState('');
@@ -35,34 +30,16 @@ function EventCreator(props) {
                 placeholder='Descripción del evento'
                 onChange={onDescriptionChange}
             />
-            <div className='hour-selector start-hour'>
-                <span>Hora de inicio</span>
-                <div>
-                    <input type='number' className='hour-cell' />
-                    <input type='number' className='hour-cell' />
-                    <span>:</span>
-                    <input type='number' className='hour-cell' />
-                    <input type='number' className='hour-cell' />
-                    <button className='no-border-btn' onClick={() => onTimePeriodClicked('START_EVENT')}>
-                        {startEventTimePeriod}
-                    </button>
-                </div>
-            </div>
 
-            <div className='hour-selector finish-hour'>
-                <span>Hora de fin</span>
-                <div>
-                    <input type='number' className='hour-cell' />
-                    <input type='number' className='hour-cell' />
-                    <span>:</span>
-                    <input type='number' className='hour-cell' />
-                    <input type='number' className='hour-cell' />
-                    <button className='no-border-btn' onClick={() => onTimePeriodClicked('FINISH_EVENT')} >
-                        {finishEventTimePeriod}
-                    </button>
-                </div>
-            </div>
+            <HourInput className='start-hour'
+                eventTimePeriod={finishEventTimePeriod}
+                setEventTimePeriod={setFinishEventTimePeriod}
+            />
 
+            <HourInput className='finish-hour'
+                eventTimePeriod={startEventTimePeriod}
+                setEventTimePeriod={setStartEventTimePeriod}
+            />
             <button className='no-border-btn save-event-btn'>
                 Guardar
             </button>
