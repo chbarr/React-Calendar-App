@@ -3,13 +3,16 @@
   --black-theme-calendar-body-color: #2a2929;
   --black-theme-calendar-dropdown-color: #272829;
   --black-theme-font-color: #efefef;
+  --black-theme-placeholder-font-color: #efefef70;
+
 
   --calendar-header-font-size: 1.5rem;
   --calendar-column-header-font-size: 1.08rem;
   --calendar-body-font-size: 1.05rem;
   --calendar-dropdown-font-size: 1.1rem;
   --calendar-day-cell-font-size: 1.3rem;
-
+  --save-btn-font-size: 1rem;
+  --standard-font-size: 1rem; 
   --event-counter-bubble-background: #cc2649;
 }
 

@@ -4,7 +4,8 @@ const initialState = {
     selectedYear: new Date().getFullYear(),
     selectedMonth: new Date().getMonth(),
     yearSelectorOpened: false,
-    monthSelectorOpened: false
+    monthSelectorOpened: false,
+    eventCreatorOpened: false
 }
 
 export const uiSlice = createSlice({
@@ -22,9 +23,13 @@ export const uiSlice = createSlice({
         setDateSelectorClicked: (state, action) => {
             state.yearSelectorOpened = action.payload.selectorType === 'YEAR' && !state.yearSelectorOpened;
             state.monthSelectorOpened = action.payload.selectorType === 'MONTH' && !state.monthSelectorOpened;
+        },
+        setEventCreatorOpened: (state, action) => {
+            state.eventCreatorOpened = action.payload.eventCreatorOpened;
         }
     }
 });
 
-export const { setSelectedYear, setSelectedMonth, setDateSelectorClicked } = uiSlice.actions;
+export const { setSelectedYear, setSelectedMonth,
+    setDateSelectorClicked, setEventCreatorOpened } = uiSlice.actions;
 export const uiReducer = uiSlice.reducer;

@@ -8,10 +8,12 @@ function Calendar() {
     const calendar = useCalendar();
     const {
         yearSelectorOpened,
-        monthSelectorOpened
+        monthSelectorOpened,
+        eventCreatorOpened
     } = useSelector(state => state.ui)
     return (
-        <section className={`calendar-container ${(yearSelectorOpened || monthSelectorOpened) && 'calendar-container-blurred'}`}>
+        <section className={`calendar-container ${(yearSelectorOpened || monthSelectorOpened
+        || eventCreatorOpened) && 'calendar-container-blurred'}`}>
             <div className='calendarGridHeader'>
                 {weekDaysES.slice(0, weekDaysES.length - 1).map((day, i) => (
                     <div key={i}
