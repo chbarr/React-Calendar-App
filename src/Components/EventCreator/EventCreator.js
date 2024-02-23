@@ -10,6 +10,12 @@ function EventCreator(props) {
     const onDescriptionChange = (event) => {
         setEventDescription(event.target.value);
     };
+    const onTimePeriodClicked = (eventTime) => {
+        if (eventTime === 'START_EVENT')
+            setStartEventTimePeriod((startEventTimePeriod === 'AM' ? 'PM' : 'AM'));
+        else
+            setFinishEventTimePeriod((finishEventTimePeriod === 'AM' ? 'PM' : 'AM'));
+    }
 
     const [eventTitle, setEventTitle] = useState('');
     const [eventDescription, setEventDescription] = useState('');
@@ -37,7 +43,9 @@ function EventCreator(props) {
                     <span>:</span>
                     <input type='number' className='hour-cell' />
                     <input type='number' className='hour-cell' />
-                    <button className='no-border-btn'>{startEventTimePeriod}</button>
+                    <button className='no-border-btn' onClick={() => onTimePeriodClicked('START_EVENT')}>
+                        {startEventTimePeriod}
+                    </button>
                 </div>
             </div>
 
@@ -49,7 +57,9 @@ function EventCreator(props) {
                     <span>:</span>
                     <input type='number' className='hour-cell' />
                     <input type='number' className='hour-cell' />
-                    <button className='no-border-btn'>{finishEventTimePeriod}</button>
+                    <button className='no-border-btn' onClick={() => onTimePeriodClicked('FINISH_EVENT')} >
+                        {finishEventTimePeriod}
+                    </button>
                 </div>
             </div>
 
