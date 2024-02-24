@@ -34,12 +34,12 @@ function EventCreator(props) {
                 onChange={onDescriptionChange}
             />
 
-            <HourInput className='start-hour'
+            <HourInput id='start-hour' className='start-hour'
                 eventTimePeriod={finishEventTimePeriod}
                 setEventTimePeriod={setFinishEventTimePeriod}
             />
 
-            <HourInput className='finish-hour'
+            <HourInput id='finish-hour' className='finish-hour'
                 eventTimePeriod={startEventTimePeriod}
                 setEventTimePeriod={setStartEventTimePeriod}
             />
