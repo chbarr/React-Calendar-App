@@ -1,10 +1,10 @@
 .event-creator-container {
     position: absolute;
-    top: 90px;
+    top: 65px;
     left: calc(50% - 150px);
 
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(9, 1fr);
     row-gap: 10px;
     margin: 0 auto;
@@ -18,9 +18,11 @@
 .event-title,
 .event-description {
     font-size: var(--calendar-dropdown-font-size);
+    padding: 0 10px;
+    box-sizing: border-box;
     border: none;
     border-radius: 8px;
-    background-color: #c9c9c940;
+    background-color: var(--black-theme-input-background-color);
     color: var(--black-theme-font-color);
 }
 
@@ -35,7 +37,6 @@
 .event-description::placeholder {
     color: var(--black-theme-placeholder-font-color);
     font-size: inherit;
-    padding: 0 10px;
 }
 
 .event-title {
@@ -64,7 +65,7 @@
 
 .save-event-btn {
     grid-row: 7 / 8;
-    grid-column: 3 / 5;
+    grid-column: 3 / 4;
     padding: 3px 0;
     width: 80px;
     font-size: var(--save-btn-font-size);

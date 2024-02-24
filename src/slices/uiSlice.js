@@ -23,9 +23,12 @@ export const uiSlice = createSlice({
         setDateSelectorClicked: (state, action) => {
             state.yearSelectorOpened = action.payload.selectorType === 'YEAR' && !state.yearSelectorOpened;
             state.monthSelectorOpened = action.payload.selectorType === 'MONTH' && !state.monthSelectorOpened;
+            state.eventCreatorOpened = false;
         },
         setEventCreatorOpened: (state, action) => {
             state.eventCreatorOpened = action.payload.eventCreatorOpened;
+            state.yearSelectorOpened = false;
+            state.monthSelectorOpened = false;
         }
     }
 });

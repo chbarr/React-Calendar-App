@@ -1,13 +1,15 @@
 .hour-input-container span{
     color: var(--black-theme-placeholder-font-color);
     font-size: var(--standard-font-size);
+    padding: 0;
 }
 
 .hour-input-container span:first-child{
     display: block;
+    margin-bottom: 5px;
 }
 
-.hour-input-container span:last-of-type{
+.hour-input-container div span{
     margin: 0 5px;
 }
 
@@ -16,13 +18,19 @@
 }
 
 .hour-cell {
-    background-color: transparent;
+    width: 10px;
     border: none;
     border-radius: 4px;
-
-    background-color: #c9c9c920;
+    
+    background-color: var(--black-theme-input-background-color);
     border-bottom: 1px solid rgb(155, 152, 152);
-    width: 10px;
+    font-size: var(--standard-font-size);
+    font-weight: 600;
+
+    color: var(--black-theme-placeholder-font-color);
+}
+
+.hour-cell:not(:first-child){
     margin-left: 2px;
 }
 
