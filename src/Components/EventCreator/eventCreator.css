@@ -66,7 +66,9 @@
 .save-event-btn {
     grid-row: 7 / 8;
     grid-column: 3 / 4;
-    padding: 3px 0;
+    padding: 0;
+    margin: 0;
+    height: 30px;
     width: 80px;
     font-size: var(--save-btn-font-size);
     font-weight: bold;
@@ -76,10 +78,15 @@
     color: var(--black-theme-font-color);
 }
 
-.save-event-btn:hover {
+.save-event-btn:not(.save-event-btn-disabled):hover {
     background-color: #96ac60;
 }
 
-.save-event-btn:active {
+.save-event-btn:not(.save-event-btn-disabled):active {
     background-color: #586e25;
+}
+
+.save-event-btn-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }

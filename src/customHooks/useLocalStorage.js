@@ -1,9 +1,8 @@
 /**
- * Gets all events stored in the LocalStorage
- *
- * @returns {Promise<Object>} Una promesa que se resuelve con un objeto que contiene los eventos.
- * @throws {Error} Si hay algún error al obtener o parsear los eventos.
- */
+  * Gets all events stored in the LocalStorage
+  *
+  * @returns {Promise<Object>} A promise that resolves to an object that contains the events.
+  */
 export function getEvents() {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -16,6 +15,7 @@ export function getEvents() {
 
 /**
   * Saves an event in local storage after a simulated delay.
+  * 
   * @param {Object} eventData - The event data to save.
   * @param {number} eventData.year - The year of the event.
   * @param {number} eventData.month - The month of the event (0-11).
@@ -42,6 +42,6 @@ export function saveEvent(eventData) {
             window.localStorage.setItem('react-calendar-events', JSON.stringify(currentEvents));
 
             resolve();
-        }, 100);
+        }, 1000);
     });
 }

@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { HourInput } from '../HourInput/HourInput';
 import { saveEvent } from '../../customHooks/useLocalStorage';
 import './eventCreator.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEventCreatorOpened } from '../../slices/uiSlice';
 
 function EventCreator(props) {
     const currentDate = new Date();
@@ -17,13 +18,33 @@ function EventCreator(props) {
         setEventDescription(event.target.value);
     };
 
+    const onSaveEvent = () => {
+        setSaveButtonClicked(true);
+        saveEvent({
+            year: selectedYear,
+            month: selectedMonth,
+            day: selectedDay,
+            startHour: eventStartHour,
+            finishHour: eventFinishHour,
+            title: eventTitle,
+            description: eventDescription
+        }).then(() => {
+            dispatch(setEventCreatorOpened(false))
+            setSaveButtonClicked(false);
+        });
+    }
+
     const [eventTitle, setEventTitle] = useState('');
     const [eventDescription, setEventDescription] = useState('');
     const [startEventTimePeriod, setStartEventTimePeriod] = useState(timePeriod);
     const [finishEventTimePeriod, setFinishEventTimePeriod] = useState(timePeriod);
     const [eventStartHour, setEventStartHour] = useState(null);
     const [eventFinishHour, setEventFinishHour] = useState(null);
+    const [saveButtonClicked, setSaveButtonClicked] = useState(false);
+
     const { selectedYear, selectedMonth, selectedDay } = useSelector(state => state.ui);
+
+    const dispatch = useDispatch();
 
     return (
         <section className='event-creator-container'>
@@ -50,18 +71,10 @@ function EventCreator(props) {
                 setEventTimePeriod={setStartEventTimePeriod}
                 setEventHour={setEventFinishHour}
             />
-            <button className='no-border-btn save-event-btn'
-                onClick={() => {
-                    saveEvent({
-                        year: selectedYear,
-                        month: selectedMonth,
-                        day: selectedDay,
-                        startHour: eventStartHour,
-                        finishHour: eventFinishHour,
-                        title: eventTitle,
-                        description: eventDescription
-                    });
-                }}
+            <button
+                className={`no-border-btn save-event-btn ${saveButtonClicked ? 'save-event-btn-disabled' : ''}`}
+                onClick={onSaveEvent}
+                disabled={saveButtonClicked}
             >
                 Guardar
             </button>
