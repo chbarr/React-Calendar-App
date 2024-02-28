@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './hourInput.css';
 
 function HourInput(props) {
+    useEffect(() => {
+        props.setEventHour(`${firstNumHour}${lastNumHour}:${firstNumMin}${lastNumMin} ${props.eventTimePeriod}`);
+    }, []);
+
     const onTimePeriodClicked = () => {
         props.setEventTimePeriod((props.eventTimePeriod === 'AM' ? 'PM' : 'AM'));
     }
@@ -9,7 +13,7 @@ function HourInput(props) {
     const onInputChange = (event, nextInput) => {
         let enteredValue = Number(event.target.value[event.target.selectionStart - 1]);
 
-        if (isNaN(enteredValue)) 
+        if (isNaN(enteredValue))
             return;
 
         switch (event.currentTarget.id) {
@@ -34,11 +38,15 @@ function HourInput(props) {
                 enteredValue = enteredValue < 0 ? 0 : enteredValue;
                 enteredValue = enteredValue > 9 ? 9 : enteredValue;
                 setLastNumMin(enteredValue);
-                return;
+                break;
             default:
                 return;
         }
-        document.getElementById(nextInput).focus();
+
+        if (event.currentTarget.id !== `lastNumMin-${props.id}`)
+            document.getElementById(nextInput).focus();
+
+        props.setEventHour(`${firstNumHour}${lastNumHour}:${firstNumMin}${lastNumMin} ${props.eventTimePeriod}`);
     }
 
     const currentDate = new Date();

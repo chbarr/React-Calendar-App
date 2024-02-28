@@ -7,7 +7,10 @@ function DayCell(props) {
     const dispatch = useDispatch();
 
     const onDayClicked = () => {
-        dispatch(setEventCreatorOpened({ 'eventCreatorOpened': !eventCreatorOpened }))
+        dispatch(setEventCreatorOpened({
+            'eventCreatorOpened': !eventCreatorOpened,
+            'dayNumber': props.dayNumber
+        }))
     }
     return (
         <button className='no-border-btn day-cell'

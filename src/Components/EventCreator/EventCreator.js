@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { HourInput } from '../HourInput/HourInput';
+import { saveEvent } from '../../customHooks/useLocalStorage';
 import './eventCreator.css'
+import { useSelector } from 'react-redux';
 
 function EventCreator(props) {
     const currentDate = new Date();
@@ -19,6 +21,9 @@ function EventCreator(props) {
     const [eventDescription, setEventDescription] = useState('');
     const [startEventTimePeriod, setStartEventTimePeriod] = useState(timePeriod);
     const [finishEventTimePeriod, setFinishEventTimePeriod] = useState(timePeriod);
+    const [eventStartHour, setEventStartHour] = useState(null);
+    const [eventFinishHour, setEventFinishHour] = useState(null);
+    const { selectedYear, selectedMonth, selectedDay } = useSelector(state => state.ui);
 
     return (
         <section className='event-creator-container'>
@@ -37,13 +42,27 @@ function EventCreator(props) {
             <HourInput id='start-hour' className='start-hour'
                 eventTimePeriod={finishEventTimePeriod}
                 setEventTimePeriod={setFinishEventTimePeriod}
+                setEventHour={setEventStartHour}
             />
 
             <HourInput id='finish-hour' className='finish-hour'
                 eventTimePeriod={startEventTimePeriod}
                 setEventTimePeriod={setStartEventTimePeriod}
+                setEventHour={setEventFinishHour}
             />
-            <button className='no-border-btn save-event-btn'>
+            <button className='no-border-btn save-event-btn'
+                onClick={() => {
+                    saveEvent({
+                        year: selectedYear,
+                        month: selectedMonth,
+                        day: selectedDay,
+                        startHour: eventStartHour,
+                        finishHour: eventFinishHour,
+                        title: eventTitle,
+                        description: eventDescription
+                    });
+                }}
+            >
                 Guardar
             </button>
         </section>
