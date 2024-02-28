@@ -2,6 +2,7 @@ import React from 'react'
 import './calendar.css'
 import { useCalendar, weekDaysES } from '../../customHooks/useCalendar';
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import DayCell from '../DayCell/DayCell';
 
 function Calendar() {
@@ -13,7 +14,7 @@ function Calendar() {
     } = useSelector(state => state.ui)
     return (
         <section className={`calendar-container ${(yearSelectorOpened || monthSelectorOpened
-        || eventCreatorOpened) && 'calendar-container-blurred'}`}>
+            || eventCreatorOpened) && 'calendar-container-blurred'}`}>
             <div className='calendarGridHeader'>
                 {weekDaysES.slice(0, weekDaysES.length - 1).map((day, i) => (
                     <div key={i}
@@ -26,17 +27,17 @@ function Calendar() {
             <div className='calendarGrid'>
                 {
                     calendar['previousMonth'].map(dayNumber => (
-                        <DayCell eventsCounter={0} dayNumber={dayNumber} />
+                        <DayCell key={uuidv4()} eventsCounter={0} dayNumber={dayNumber} />
                     ))
                 }
                 {
                     calendar['currentMonth'].map((_, i) => (
-                        <DayCell eventsCounter={0} dayNumber={i + 1} />
+                        <DayCell key={uuidv4()} eventsCounter={0} dayNumber={i + 1} />
                     ))
                 }
                 {
                     calendar['nextMonth'].map((_, i) => (
-                        <DayCell eventsCounter={0} dayNumber={i + 1} />
+                        <DayCell key={uuidv4()} eventsCounter={0} dayNumber={i + 1} />
                     ))
                 }
             </div>
