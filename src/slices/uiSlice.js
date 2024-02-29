@@ -27,7 +27,7 @@ export const uiSlice = createSlice({
             state.eventCreatorOpened = false;
         },
         setEventCreatorOpened: (state, action) => {
-            state.selectedDay = action.payload.selectedDay;
+            state.selectedDay = action.payload.dayNumber;
             state.eventCreatorOpened = action.payload.eventCreatorOpened;
             state.yearSelectorOpened = false;
             state.monthSelectorOpened = false;

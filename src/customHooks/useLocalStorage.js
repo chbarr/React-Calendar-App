@@ -9,7 +9,7 @@ export function getEvents() {
             let currentEvents = window.localStorage.getItem('react-calendar-events');
             currentEvents = currentEvents ? JSON.parse(currentEvents) : {};
             resolve(currentEvents);
-        }, 100);
+        }, 500);
     });
 }
 
@@ -26,22 +26,29 @@ export function saveEvent(eventData) {
     return new Promise((resolve) => {
         setTimeout(async () => {
             const currentEvents = await getEvents();
-            const { year, month, ...event } = eventData;
+            const { year, month, day, ...event } = eventData;
 
-            const isThereEventOnThisYear = !!currentEvents[eventData.year];
-            if (isThereEventOnThisYear) {
-                const isThereEventOnThisMonth = !!currentEvents[eventData.year][eventData.month]
-                if (!isThereEventOnThisMonth)
-                    currentEvents[eventData.year][eventData.month] = [];
+            const areThereEventsOnThisYear = !!currentEvents[year];
+            if (areThereEventsOnThisYear) {
+                const areThereEventsOnThisMonth = !!currentEvents[year][month]
+                if (!areThereEventsOnThisMonth) {
+                    currentEvents[year][month] = {};
+                    currentEvents[year][month][day] = [];
+                } else {
+                    const areThereEventsOnThisDay = !!currentEvents[year][month][day];
+                    if (!areThereEventsOnThisDay)
+                        currentEvents[year][month][day] = [];
+                }
             } else {
-                currentEvents[eventData.year] = {};
-                currentEvents[eventData.year][eventData.month] = [];
+                currentEvents[year] = {};
+                currentEvents[year][month] = {};
+                currentEvents[year][month][day] = [];
             }
 
-            currentEvents[eventData.year][eventData.month].push(event);
+            currentEvents[year][month][day].push(event);
             window.localStorage.setItem('react-calendar-events', JSON.stringify(currentEvents));
 
             resolve();
-        }, 1000);
+        }, 400);
     });
 }

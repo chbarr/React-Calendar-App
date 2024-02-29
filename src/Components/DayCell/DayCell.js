@@ -15,7 +15,7 @@ function DayCell(props) {
     return (
         <button className='no-border-btn day-cell'
             onClick={onDayClicked}>
-            <div className={`events-counter ${(props.eventsCounter <= 0) && 'events-counter-hidden'}`}>
+            <div className={`events-counter ${(!props.eventsCounter || props.eventsCounter <= 0) && 'events-counter-hidden'}`}>
                 <span>{props.eventsCounter}</span>
             </div>
             <span className='day-number'>{props.dayNumber}</span>

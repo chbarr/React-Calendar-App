@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 export const weekDaysES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
 export const monthsNameES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
-const getPreviousMonth = (currentYear, currentMonth) => {
+export const getPreviousMonth = (currentYear, currentMonth) => {
     return (currentMonth === 0) ? [currentYear - 1, 0] : [currentYear, currentMonth - 1];
 }
 
-const getNextMonth = (currentYear, currentMonth) => {
+export const getNextMonth = (currentYear, currentMonth) => {
     return (currentMonth === 11) ? [currentYear + 1, 0] : [currentYear, currentMonth + 1];
 };
 
