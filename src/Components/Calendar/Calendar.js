@@ -3,7 +3,7 @@ import './calendar.css'
 import { getNextMonth, getPreviousMonth, useCalendar, weekDaysES } from '../../customHooks/useCalendar';
 import { useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import DayCell from '../DayCell/DayCell';
+import { DayCell } from '../DayCell/DayCell';
 import { getEvents } from '../../customHooks/useLocalStorage';
 
 let events;
@@ -19,8 +19,8 @@ function Calendar() {
     const [loadingEvents, setLoadingEvents] = useState(true);
 
     const calendar = useCalendar();
-    const previousMonth = getPreviousMonth(selectedYear, selectedMonth);
-    const nextMonth = getNextMonth(selectedYear, selectedMonth);
+    const { year: previousMonthYear, month: previousMonth } = getPreviousMonth(selectedYear, selectedMonth);
+    const { year: nextMonthYear, month: nextMonth } = getNextMonth(selectedYear, selectedMonth);
     useEffect(() => {
         if (!events) {
             getEvents()
@@ -50,18 +50,33 @@ function Calendar() {
                 <div className='calendarGrid'>
                     {
 
-                        calendar.previousMonth.map(dayNumber => (
-                            <DayCell key={uuidv4()} eventsCounter={events[selectedYear]?.[previousMonth]?.[dayNumber]?.length} dayNumber={dayNumber} />
+                        calendar.previousMonthDays.map(dayNumber => (
+                            <DayCell key={uuidv4()}
+                                eventsCounter={events[previousMonthYear]?.[previousMonth]?.[dayNumber]?.length}
+                                yearNumber={previousMonthYear}
+                                monthNumber={previousMonth}
+                                dayNumber={dayNumber}
+                            />
                         ))
                     }
                     {
-                        calendar.currentMonth.map((_, i) => (
-                            <DayCell key={uuidv4()} eventsCounter={events[selectedYear]?.[selectedMonth]?.[i + 1]?.length} dayNumber={i + 1} />
+                        calendar.currentMonthDays.map((_, i) => (
+                            <DayCell key={uuidv4()}
+                                eventsCounter={events[selectedYear]?.[selectedMonth]?.[i + 1]?.length}
+                                yearNumber={selectedYear}
+                                monthNumber={selectedMonth}
+                                dayNumber={i + 1}
+                            />
                         ))
                     }
                     {
-                        calendar.nextMonth.map((_, i) => (
-                            <DayCell key={uuidv4()} eventsCounter={events[selectedYear]?.[nextMonth]?.[i + 1]?.length} dayNumber={i + 1} />
+                        calendar.nextMonthDays.map((_, i) => (
+                            <DayCell key={uuidv4()}
+                                eventsCounter={events[nextMonthYear]?.[nextMonth]?.[i + 1]?.length}
+                                yearNumber={nextMonthYear}
+                                monthNumber={nextMonth}
+                                dayNumber={i + 1}
+                            />
                         ))
                     }
                 </div>

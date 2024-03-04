@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     selectedYear: new Date().getFullYear(),
     selectedMonth: new Date().getMonth(),
-    selectedDay: -1,
+    eventYear: -1,
+    eventMonth: -1,
+    eventDay: -1,
     yearSelectorOpened: false,
     monthSelectorOpened: false,
     eventCreatorOpened: false
@@ -27,7 +29,9 @@ export const uiSlice = createSlice({
             state.eventCreatorOpened = false;
         },
         setEventCreatorOpened: (state, action) => {
-            state.selectedDay = action.payload.dayNumber;
+            state.eventYear = action.payload.yearNumber;
+            state.eventMonth = action.payload.monthNumber;
+            state.eventDay = action.payload.dayNumber;
             state.eventCreatorOpened = action.payload.eventCreatorOpened;
             state.yearSelectorOpened = false;
             state.monthSelectorOpened = false;

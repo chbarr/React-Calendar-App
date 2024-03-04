@@ -21,9 +21,9 @@ function EventCreator(props) {
     const onSaveEvent = () => {
         setSaveButtonClicked(true);
         saveEvent({
-            year: selectedYear,
-            month: selectedMonth,
-            day: selectedDay,
+            year: eventYear,
+            month: eventMonth,
+            day: eventDay,
             startHour: eventStartHour,
             finishHour: eventFinishHour,
             title: eventTitle,
@@ -42,7 +42,7 @@ function EventCreator(props) {
     const [eventFinishHour, setEventFinishHour] = useState(null);
     const [saveButtonClicked, setSaveButtonClicked] = useState(false);
 
-    const { selectedYear, selectedMonth, selectedDay } = useSelector(state => state.ui);
+    const { eventYear, eventMonth, eventDay } = useSelector(state => state.ui);
 
     const dispatch = useDispatch();
 

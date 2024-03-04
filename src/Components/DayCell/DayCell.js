@@ -9,7 +9,9 @@ function DayCell(props) {
     const onDayClicked = () => {
         dispatch(setEventCreatorOpened({
             'eventCreatorOpened': !eventCreatorOpened,
-            'dayNumber': props.dayNumber
+            'dayNumber': props.dayNumber,
+            'monthNumber': props.monthNumber,
+            'yearNumber': props.yearNumber
         }))
     }
     return (
@@ -23,4 +25,4 @@ function DayCell(props) {
     )
 }
 
-export default DayCell
+export { DayCell }
