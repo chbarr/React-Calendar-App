@@ -13,7 +13,8 @@ function Calendar() {
         selectedMonth,
         yearSelectorOpened,
         monthSelectorOpened,
-        eventCreatorOpened
+        eventCreatorOpened,
+        eventSaved
     } = useSelector(state => state.ui)
 
     const [loadingEvents, setLoadingEvents] = useState(true);
@@ -22,14 +23,14 @@ function Calendar() {
     const { year: previousMonthYear, month: previousMonth } = getPreviousMonth(selectedYear, selectedMonth);
     const { year: nextMonthYear, month: nextMonth } = getNextMonth(selectedYear, selectedMonth);
     useEffect(() => {
-        if (!events) {
+        if (!events || eventSaved) {
             getEvents()
                 .then((currentEvents) => {
                     setLoadingEvents(false);
                     events = currentEvents;
                 })
         }
-    }, [events])
+    }, [eventSaved])
     if (loadingEvents) {
         return (
             <div>Obteniendo eventos</div>

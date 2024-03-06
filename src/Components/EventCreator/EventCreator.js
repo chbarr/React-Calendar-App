@@ -4,7 +4,7 @@ import { HourInput } from '../HourInput/HourInput';
 import { saveEvent } from '../../customHooks/useLocalStorage';
 import './eventCreator.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { setEventCreatorOpened } from '../../slices/uiSlice';
+import { setEventSaved } from '../../slices/uiSlice';
 
 function EventCreator(props) {
     const currentDate = new Date();
@@ -29,7 +29,7 @@ function EventCreator(props) {
             title: eventTitle,
             description: eventDescription
         }).then(() => {
-            dispatch(setEventCreatorOpened(false))
+            dispatch(setEventSaved({ eventSaved: true }))
             setSaveButtonClicked(false);
         });
     }
