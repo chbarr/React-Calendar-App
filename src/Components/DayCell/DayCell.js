@@ -8,28 +8,36 @@ const MemoizedDayCell = React.memo(
     function DayCell(props) {
         const eventCreatorOpened = useSelector(state => state.ui.eventCreatorOpened);
         const dispatch = useDispatch();
+        const eventsCounter = props.dayEvents.length;
 
         const onDayClicked = () => {
             dispatch(setEventCreatorOpened({
-                'eventCreatorOpened': !eventCreatorOpened,
-                'dayNumber': props.dayNumber,
-                'monthNumber': props.monthNumber,
-                'yearNumber': props.yearNumber
+                'eventCreatorOpened': false
             }));
+            if (eventsCounter <= 0) {
+                dispatch(setEventCreatorOpened({
+                    'eventCreatorOpened': !eventCreatorOpened,
+                    'dayNumber': props.dayNumber,
+                    'monthNumber': props.monthNumber,
+                    'yearNumber': props.yearNumber
+                }));
+            } else {
+                console.log("Show events detailed");
+            }
         };
 
         return (
             <button className='no-border-btn day-cell' onClick={onDayClicked}>
-                <div className={`events-counter ${(!props.eventsCounter || props.eventsCounter <= 0) && 'events-counter-hidden'}`}>
-                    <span>{props.eventsCounter}</span>
+                <div className={`events-counter ${(eventsCounter <= 0) && 'events-counter-hidden'}`}>
+                    <span>{eventsCounter}</span>
                 </div>
                 <span className='day-number'>{props.dayNumber}</span>
             </button>
         );
     },
     (prevProps, nextProps) => {
-        // if eventsCounter has not changed, the component will not be re rendered
-        return prevProps.eventsCounter === nextProps.eventsCounter;
+        // if dayEvents has not changed, the component will not be re rendered
+        return prevProps.dayEvents === nextProps.dayEvents;
     }
 );
 

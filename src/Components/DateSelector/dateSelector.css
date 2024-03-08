@@ -1,10 +1,10 @@
 .date-selector-container {
-    position: relative;
-    z-index: 2;
-}
-
-.date-legend {
     font-family: 'Roboto Mono';
     font-size: var(--calendar-header-font-size);
-    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin: 0 20px;
 }

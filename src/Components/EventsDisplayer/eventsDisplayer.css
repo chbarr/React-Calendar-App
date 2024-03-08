@@ -1,0 +1,59 @@
+.events-container {
+    overflow-y: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    height: 420px;
+    margin-top: 20px;
+}
+
+.events-carousel {
+    position: relative;
+    height: 1440px;
+    width: 100%;
+    background-color: var(--black-theme-calendar-header-color);
+    color: var(--black-theme-font-color);
+}
+
+.events-displayer {
+    display: grid;
+}
+
+.hour-bar {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.horizontal-separator {
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    border-top: 1px dotted var(--black-theme-font-color);
+}
+
+.vertical-separator {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    width: 1px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.vertical-separator:first-of-type {
+    border-left: 1px dotted var(--black-theme-font-color);
+    left: 55px;
+}
+
+.vertical-separator:last-of-type {
+    border-right: 1px dotted var(--black-theme-font-color);
+    border-spacing: 10px;
+    right: 10px;
+}
+
+.hour-label{
+    font-size: 0.65rem;
+    width: 45px;
+    margin-left: 5px;
+}

@@ -50,10 +50,9 @@ function Calendar() {
                 </div>
                 <div className='calendarGrid'>
                     {
-
                         calendar.previousMonthDays.map(dayNumber => (
                             <DayCell key={uuidv4()}
-                                eventsCounter={events[previousMonthYear]?.[previousMonth]?.[dayNumber]?.length}
+                                dayEvents={events[previousMonthYear]?.[previousMonth]?.[dayNumber] || []}
                                 yearNumber={previousMonthYear}
                                 monthNumber={previousMonth}
                                 dayNumber={dayNumber}
@@ -63,7 +62,7 @@ function Calendar() {
                     {
                         calendar.currentMonthDays.map((_, i) => (
                             <DayCell key={uuidv4()}
-                                eventsCounter={events[selectedYear]?.[selectedMonth]?.[i + 1]?.length}
+                                dayEvents={events[selectedYear]?.[selectedMonth]?.[i + 1] || []}
                                 yearNumber={selectedYear}
                                 monthNumber={selectedMonth}
                                 dayNumber={i + 1}
@@ -73,7 +72,7 @@ function Calendar() {
                     {
                         calendar.nextMonthDays.map((_, i) => (
                             <DayCell key={uuidv4()}
-                                eventsCounter={events[nextMonthYear]?.[nextMonth]?.[i + 1]?.length}
+                                dayEvents={events[nextMonthYear]?.[nextMonth]?.[i + 1] || []}
                                 yearNumber={nextMonthYear}
                                 monthNumber={nextMonth}
                                 dayNumber={i + 1}
@@ -86,4 +85,4 @@ function Calendar() {
     }
 }
 
-export default Calendar
+export { Calendar }

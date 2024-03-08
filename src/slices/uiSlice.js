@@ -9,7 +9,9 @@ const initialState = {
     yearSelectorOpened: false,
     monthSelectorOpened: false,
     eventCreatorOpened: false,
-    eventSaved: false
+    eventSaved: false,
+    eventsDisplayerOpened: false,
+    dayEvents: []
 }
 
 export const uiSlice = createSlice({
@@ -21,6 +23,7 @@ export const uiSlice = createSlice({
             state.yearSelectorOpened = false;
         },
         setSelectedMonth: (state, action) => {
+            state.selectedYear = action.payload.selectedYear || state.selectedYear;
             state.selectedMonth = action.payload.selectedMonth;
             state.monthSelectorOpened = false;
         },
@@ -43,6 +46,10 @@ export const uiSlice = createSlice({
             state.eventCreatorOpened = false;
             state.yearSelectorOpened = false;
             state.monthSelectorOpened = false;
+        },
+        setEventDisplayerOpener: (state, action) => {
+            state.eventsDisplayerOpened = true;
+            state.dayEvents = action.payload.dayEvents;
         }
     }
 });
