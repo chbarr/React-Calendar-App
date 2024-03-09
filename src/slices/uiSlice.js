@@ -48,7 +48,7 @@ export const uiSlice = createSlice({
             state.monthSelectorOpened = false;
         },
         setEventDisplayerOpener: (state, action) => {
-            state.eventsDisplayerOpened = true;
+            state.eventsDisplayerOpened = action.payload.eventsDisplayerOpened;
             state.dayEvents = action.payload.dayEvents;
         }
     }
@@ -56,5 +56,5 @@ export const uiSlice = createSlice({
 
 export const { setSelectedYear, setSelectedMonth,
     setDateSelectorClicked, setEventCreatorOpened,
-    setEventSaved } = uiSlice.actions;
+    setEventSaved, setEventDisplayerOpener } = uiSlice.actions;
 export const uiReducer = uiSlice.reducer;

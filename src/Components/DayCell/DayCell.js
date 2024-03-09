@@ -1,7 +1,7 @@
 import React from 'react';
 import './dayCell.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEventCreatorOpened } from '../../slices/uiSlice';
+import { setEventCreatorOpened, setEventDisplayerOpener } from '../../slices/uiSlice';
 
 // Uses React.memo with selective memoization to avoid unnecessary re-renders
 const MemoizedDayCell = React.memo(
@@ -22,7 +22,10 @@ const MemoizedDayCell = React.memo(
                     'yearNumber': props.yearNumber
                 }));
             } else {
-                console.log("Show events detailed");
+                dispatch(setEventDisplayerOpener({
+                    eventsDisplayerOpened: true,
+                    dayEvents: props.dayEvents
+                }))
             }
         };
 

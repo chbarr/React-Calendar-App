@@ -5,13 +5,13 @@ import { useSelector } from 'react-redux';
 import { EventCreator } from '../EventCreator/EventCreator';
 import { EventsDisplayer } from '../EventsDisplayer/EventsDisplayer';
 function App() {
-  const eventCreatorOpened = useSelector(state => state.ui.eventCreatorOpened);
+  const { eventCreatorOpened, eventsDisplayerOpened } = useSelector(state => state.ui);
   return (
     <div className="App">
       <DateSelector />
       <Calendar />
       {eventCreatorOpened && <EventCreator />}
-      <EventsDisplayer />
+      {eventsDisplayerOpened && <EventsDisplayer />}
     </div >
   );
 }

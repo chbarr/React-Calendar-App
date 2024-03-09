@@ -3,6 +3,7 @@ import { EventCell } from '../EventCell/EventCell'
 import { v4 as uuidv4 } from 'uuid';
 import './eventsDisplayer.css';
 import { dayHours } from '../../customHooks/useCalendar';
+import { EventsRow } from '../EventsRow/EventsRow';
 function EventsDisplayer(props) {
     return (
         <section className='events-container'>
@@ -11,10 +12,7 @@ function EventsDisplayer(props) {
                 <section className='events-displayer'>
                     {dayHours.map(
                         hour => (
-                            <div className='hour-bar' key={uuidv4()}>
-                                <span className='hour-label'> {hour}</span>
-                                <hr className='horizontal-separator' />
-                            </div>
+                            <EventsRow key={uuidv4()} hour={hour} />
                         ))
                     }
                 </section>

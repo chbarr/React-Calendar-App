@@ -1,0 +1,26 @@
+.hour-separator {
+    display: flex;
+    align-items: center;
+}
+.hour-bar {
+    height: 60px;
+}
+
+.horizontal-separator {
+    width: 85%;
+    background-color: transparent;
+    border: none;
+    border-top: 1px dotted var(--black-theme-font-color);
+}
+
+.events-row{
+    display: grid;
+    grid-auto-flow: column;
+    height: 100%;
+}
+
+.hour-label{
+    font-size: 0.65rem;
+    width: 45px;
+    margin-left: 5px;
+}
